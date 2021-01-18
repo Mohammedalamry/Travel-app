@@ -40,6 +40,8 @@ npm run test
    * sing up for   api keys for  Weatherbit API and  Pixabay.  then you will get keys  
    *  "Use npm or yarn to install the dotenv-webpack package ```npm install dotenv-webpack --save-dev ```" to save     your api key as secret key.
 
+* Use Local Storage to save the data
+
 * install the necessary for development mode such as :
 ```
 npm i -D @babel/core @babel/preset-env babel-loader
