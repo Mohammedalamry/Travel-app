@@ -1,4 +1,5 @@
 //  import dotenv from 'dotenv'
+import * as fetch from 'node-fetch';
 const origin = document.getElementById('origin');
 const destination = document.getElementById('destination');
 const dateDeparture = document.getElementById('dateDeparture');
@@ -54,8 +55,8 @@ function performAction(e){
 }
 // submitsearch.addEventListener('click',performAction);
 // this is  a funciotn to get lat and lnag of geonames api 
-const getLangLat = async (city)=>{
-const res = await fetch(`http://api.geonames.org/searchJSON?q=${city}&username=${process.env.USERNAME}`);
+async function getLangLat (city){
+const res = await fetch(`http://api.geonames.org/searchJSON?q=${city}&username=alamri123`);
 try{
 let data =  await res.json();
 await console.log(data.geonames[0])
@@ -69,9 +70,9 @@ console.log("error", error)
 }
 }
  //this is funciotn to get   forcast weather data
-const getweatherbit= async (lat,lon)=>{
+ async function getweatherbit (lat,lon){
 
-    const res = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${process.env.API_KEY}`);
+    const res = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=97c060c44177456792587c34d7ed2955`);
     try{
     let data =  await res.json();
     await console.log(data)
@@ -86,11 +87,11 @@ const getweatherbit= async (lat,lon)=>{
     } 
     //this is funciotn to get  city of getpicofpixabay 
 
-    const getpicofpixabay= async ()=>{
+    async  function getpicofpixabay(){
        let city = destination.value;
        city = city.split(" ") 
        city = city.join("+") 
-        const res = await fetch(`https://pixabay.com/api/?key=${process.env.API_KEY_apixabay}&q=${city}&image_type=photo`);
+        const res = await fetch(`https://pixabay.com/api/?key=19899301-5fcb3011088fff2502d8f7666&q=${city}&image_type=photo`);
         try{
         let data =  await res.json();
       //   dataoject['origin']= await origin.value;
@@ -111,7 +112,7 @@ const getweatherbit= async (lat,lon)=>{
 
 
 // this is function to post data to serever.js 
-const postdata = async (url='',data={})=>{
+async function postdata  (url='',data={}){
    console.log(data)
    const resposne =  await fetch(url,{
    method: 'POST',
@@ -158,7 +159,7 @@ console.log(`Your API key is 111 `);
 }
 
 //function  to update the UI  dynamically by get data from server side .
-const updateUi =  async (url)=>{
+async function updateUi (url){
    const resposne =  await fetch(url)
    try {
    const data = await resposne.json()
@@ -269,10 +270,10 @@ getkey()
 // this is event listener to  search  for  flight
 submitsearch.addEventListener('click',performAction);
 
-user_option.addEventListener('change', user_options);
+// user_option.addEventListener('change', user_options);
 // save_localstorage.addEventListener('change',get_Items_localstorage );
 // save_localstorage.addEventListener('change',get_Items_localstorage );
-// save_localstorage.addEventListener('change',get_Items_localstorage);
+save_localstorage.addEventListener('change',get_Items_localstorage);
 
 // this is event listener to remove user search   for  flight from local storage.
 remove.addEventListener('click',removeItems_localstorage);

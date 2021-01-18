@@ -31,18 +31,18 @@ console.log(`server running on localhost:${port}`);
 
 }
 
-app.get('/trips', callback)
-  function  callback(req , res){
+app.get('/trips', callback);
+async  function  callback(req , res){
   
-  res.send(projectData);
+ await res.send(projectData);
 // res.send(projectData.feeling +"Hi nonde");
 // projectData={}
  }
-// this is get endpoint for  Mock API
- app.get('/route',callbackmok)
-   function callbackmok(req , res){
+
+app.get('/route',callbackmok);
+async function callbackmok(req , res){
   
-    res.send({messag:"Hello webpack"});
+   await res.send({messag:"Hello webpack"});
 // res.send(projectData.feeling +"Hi nonde");
 
  }
