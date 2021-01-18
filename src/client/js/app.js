@@ -8,8 +8,8 @@ const submitsearch = document.getElementById('submitsearch');
 
 
 //this varablie  to get id for element to update UI
-const image = document.querySelector('.image-arrival-city'); 
-const ori_city = document.getElementById('ori-city');
+let image = document.querySelector('.image-arrival-city'); 
+let ori_city = document.getElementById('ori-city');
 const dest_city = document.getElementById('dest-city');
 const depart_date =  document.getElementById('depart-date');
 const arrive_date = document.getElementById('arrive-date');
@@ -173,16 +173,17 @@ async function updateUi (url){
    descriptionWeather.innerHTML= data.weather_description
    image.src=data.image
    localStorage.setItem("image",image.src);
-   localStorage.setItem("ori_city",ori_city.innerHTML);
-   localStorage.setItem("dest_city",dest_city.innerHTML);
-   localStorage.setItem("depart_date",depart_date.innerHTML);
-   localStorage.setItem("arrive_date", arrive_date .innerHTML);
-   localStorage.setItem("hihgTemp" ,hihgTemp.innerHTML);
-   localStorage.setItem("lowTemp",lowTemp.innerHTML);
-   localStorage.setItem("descriptionWeather",descriptionWeather.innerHTML);
+   image.src=localStorage.getItem("image");
+   // localStorage.setItem("ori_city",ori_city.innerHTML);
+   // localStorage.setItem("dest_city",dest_city.innerHTML);
+   // localStorage.setItem("depart_date",depart_date.innerHTML);
+   // localStorage.setItem("arrive_date", arrive_date .innerHTML);
+   // localStorage.setItem("hihgTemp" ,hihgTemp.innerHTML);
+   // localStorage.setItem("lowTemp",lowTemp.innerHTML);
+   // localStorage.setItem("descriptionWeather",descriptionWeather.innerHTML);
 
 
-   localStorage.setItem("image",image.src);
+   // localStorage.setItem("image",image.src);
 
    }
    
@@ -194,13 +195,14 @@ async function updateUi (url){
    }
 //function  to update the UI  dynamically by get data from local storgage
   function user_options(e){
-   
+   e.preventDefault();
 if(e.target.matches('button.save-option')){
+
    console.log("hihi hi ")
     localStorage.setItem("image",image.src);
-    image.src=localStorage.getItem("image");
+    image.src=localStorage.image
     localStorage.setItem("ori_city",ori_city.innerHTML);
-    dest_city.innerHTML = localStorage.getItem("ori_city");
+    dest_city.innerHTML = localStorage.ori_city
     localStorage.setItem("dest_city",dest_city.innerHTML);
     dest_city.innerHTML = localStorage.getItem("dest_city");
     localStorage.setItem("depart_date",depart_date.innerHTML);
@@ -247,10 +249,10 @@ if(e.target.matches('button.save-option')){
 // test function  to update the UI  dynamically  to  get data from local storgage
 
 function get_Items_localstorage(e){
-   console.log("this cklier" ,e.target)
-   document.querySelector('.image-arrival-city').src=localStorage.getItem("image")  
-   dest_city.innerHTML = localStorage.getItem("dest_city")
-   depart_date.innerHTML = localStorage.getItem("depart_date")
+    e.preventDefault();
+   document.querySelector('.image-arrival-city').src=localStorage.image;  
+   dest_city.innerHTML = localStorage.dest_city;
+   depart_date.innerHTML = localStorage.depart_date;
    arrive_date .innerHTML = localStorage.getItem("arrive_date")
    hihgTemp.innerHTML = localStorage.getItem("hihgTemp")
    lowTemp.innerHTML = localStorage.getItem("lowTemp")
@@ -268,13 +270,17 @@ function removeItems_localstorage(){
 
 getkey()
 // this is event listener to  search  for  flight
-submitsearch.addEventListener('click',performAction);
+document.addEventListener('DOMContentLoaded',function(){
+   // submitsearch.addEventListener('click',performAction);
+   remove.addEventListener('click',removeItems_localstorage);
+   save_localstorage.addEventListener('change',Client.get_Items_localstorage())
+})
+
 
 // user_option.addEventListener('change', user_options);
 // save_localstorage.addEventListener('change',get_Items_localstorage );
 // save_localstorage.addEventListener('change',get_Items_localstorage );
-save_localstorage.addEventListener('change',get_Items_localstorage);
+// save_localstorage.addEventListener('change',get_Items_localstorage);
 
 // this is event listener to remove user search   for  flight from local storage.
-remove.addEventListener('click',removeItems_localstorage);
 export{getkey, performAction,user_options,get_Items_localstorage, removeItems_localstorage} 
