@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../styles/main.scss"> -->
+</head>
+
+
+<body>
+    <header class="header-container">
+         
+        <div class="right-header-list"><img class="logo" src="../media/googl-fligt-logo.gif" alt="flightimage" > <span class="text-logo">Travle app</span></div>
+        <div class="left-header-list">
+        <div class="header-list" > contact</div>
+        <div class="header-list" > abuot us</div>
+    </div>   
+        </header>
+        <main>
+        <section class="section-1">
+        <h2 class="topic">welcome travle app</h2>
+        <p class="messag" id="results">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, quis corrupti asperiores, porro atque provident unde placeat rerum ex ut, in delectus nam recusandae voluptatibus cupiditate itaque voluptas quod dignissimos!</p>
+        <div class="container-part1">
+        <form class="form-section" action="">
+        <label>origin  <input id="origin" type="text" name=""  placeholder="origin"> 
+        </label>
+       
+        <label>destination <input id="destination" type="text" name=""  placeholder="destination"> 
+        </label>  
+      
+        <label>date departure <input id="dateDeparture" type="date" name=""  placeholder="date departure"> 
+        </label>  
+         <label for="date arrive">date arrive <input id="dateArrive" type="date" name=""  placeholder="date arrive">
+        </label>
+             
+        <input id="submitsearch" type="submit" name="search" value="submit"  >
+        
+        </form>
+    </div>
+        </section>
+        
+        <section class="section-2">
+        <div class="topic-section-2"><h2>     your Trip      </h2>
+        <img class="image-flight-section-2" src="../media/googl-fligt-logo.gif" alt="flight image">
+        </div>
+        
+        <div class="container-section-2">
+        <div class="part-1"> 
+      
+         <img src="../media/googl-fligt-logo.gif" class="image-arrival-city" alt="london">
+      
+        </div>
+        <div class="part-2">    <div> your Trip:<span id="ori-city">london</span> To <span id="dest-city"> Paris</span></div>
+        <div>Departing at<span id="depart-date"> Dec,12.2020 </span>And arrive at<span id="arrive-date">Dec,12.2021</span></div>         
+        <form>
+        <div class="user-option">
+      
+        <button class="save-option" id="savelocalstorage">save</button>
+        <button class="remove-option" id="removelocalsroge">remove</button>
+        </div>
+    </form>
+        <div>typical weather for then is:</div>
+        <div>Time1<span></span></div>
+        <div >Hihg:<span id="hihg">46</span> Low <span id="low">35</span></div>
+        <div>and <span id="description">summary </span></div>
+        </div>
+    </div>
+        </section>
+        </main>
+        
+<footer>  <p> footer</p></footer>
+ 
+
+    <script>    
+        if ('serviceWorker' in navigator){
+        window.addEventListener('load',()=>{
+        navigator.serviceWorker.register('/service-worker.js');
+       
+        });
+       
+        }
+       
+       </script>  
+</body>
+</html>
